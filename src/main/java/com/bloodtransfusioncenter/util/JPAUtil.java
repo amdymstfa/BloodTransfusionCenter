@@ -1,49 +1,49 @@
-package com.bloodtransfusioncenter.util ;
+package com.bloodtransfusioncenter.util;
 
-import javax.persistence.EntityManagerFactory ;
-import javax.persistence.Persistence ;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Manage JPA EntityManagerFactory with utility class
- * Ensure on instance with Singleton pattern
+ * Utility class to manage the JPA EntityManagerFactory.
+ * Implements the Singleton pattern to ensure a single shared instance
+ * across the entire application.
  */
+public class JPAUtil {
 
-class JPAUtil {
-    private static EntityManagerFactory emf ;
-
-    /**
-     * Forbid instance of this class
-     */
-
-    private JPAUtil(){}
+    public static final Logger logger = LoggerFactory.getLogger(JPAUtil.class);
+    private static EntityManagerFactory emf;
 
     /**
-     * Gets the entity factory instance
-     * Create it if not exist
-     * @return entity instance
+     * Private constructor to prevent instantiation.
      */
+    private JPAUtil() {}
 
-    public static EntityManagerFactory getEntityManagerFactory(){
-        if(emf == null){
+    /**
+     * Returns the singleton instance of EntityManagerFactory.
+     * Initializes it if it doesn't already exist.
+     */
+    public static synchronized EntityManagerFactory getEntityManagerFactory() {
+        if (emf == null) {
             try {
                 emf = Persistence.createEntityManagerFactory("blood_transfusion_center_PU");
-                System.out.println("EntityManagerFactory initialized successfully");
-            } catch (Exception e){
-                System.err.println("Error creation EntityManagerFactory" + e.getMessage());
-                throw new RuntimeException("Failed initialization EntityManagerFactory", e);
+                logger.info("EntityManagerFactory initialized successfully ");
+            } catch (Exception e) {
+                logger.error("Error creating EntityManagerFactory", e);
+                throw new RuntimeException("Failed to initialize EntityManagerFactory", e);
             }
         }
-        return emf ;
     }
 
     /**
-     * Closes EntityManagerFactory
-     * Should be called when the application shuts down
+     * Closes the EntityManagerFactory if it is open.
+     * Should be called when the application shuts down.
      */
-    public static void closeEntityManagerFactory(){
-        if(emf != null && emf.isOpen()){
+    public static void closeEntityManagerFactory() {
+        if (emf != null && emf.isOpen()) {
             emf.close();
-            System.out.println("EntityManagerFactory closed successfully");
+            logger.info("EntityManagerFactory closed successfully");
         }
     }
 }
