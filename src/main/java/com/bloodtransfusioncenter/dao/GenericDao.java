@@ -7,7 +7,7 @@ import java.util.Optional ;
  * Generic interface DAO providing basic CRUD operations.
  * @param <T>
  */
-interface GenericDao<T> {
+public interface GenericDao<T> {
     /**
      * Save a new entity in the database
      * @param entity the entity that we save
