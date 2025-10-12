@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+<!-- ========================================== -->
+    <!-- Application Information -->
+    <!-- ========================================== -->
+    <display-name>Blood Transfusion Center</display-name>
+    <description>Blood Bank Management System</description>
+
+    <!-- ========================================== -->
+    <!-- Welcome, Files -->
+    <!-- ========================================== -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- ========================================== -->
+    <!-- Listeners -->
+    <!-- ========================================== -->
+
+    <!-- JPA Context Listener -->
+    <listener>
+        <listener-class>com.bloodtransfusioncenter.util.JPAContextListener</listener-class>
+    </listener>
+
+    <!-- ========================================== -->
+    <!-- Servlets Configuration -->
+    <!-- ========================================== -->
+
+    <!-- Donor Servlet -->
+    <servlet>
+        <servlet-name>DonorServlet</servlet-name>
+        <servlet-class>com.bloodtransfusioncenter.controller.DonorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DonorServlet</servlet-name>
+        <url-pattern>/donors/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Recipient Servlet -->
+    <servlet>
+        <servlet-name>RecipientServlet</servlet-name>
+        <servlet-class>com.bloodtransfusioncenter.controller.RecipientServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RecipientServlet</servlet-name>
+        <url-pattern>/recipients/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Association Servlet -->
+    <servlet>
+        <servlet-name>AssociationServlet</servlet-name>
+        <servlet-class>com.bloodtransfusioncenter.controller.AssociationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AssociationServlet</servlet-name>
+        <url-pattern>/associations/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- ========================================== -->
+    <!-- Error Pages -->
+    <!-- ========================================== -->
+
+    <!-- 404 - Not Found -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/common/404.jsp</location>
+    </error-page>
+
+    <!-- 500 - Internal Server Error -->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/common/500.jsp</location>
+    </error-page>
+
+    <!-- ========================================== -->
+    <!-- Session Configuration -->
+    <!-- ========================================== -->
+    <session-config>
+        <session-timeout>30</session-timeout> <!-- 30 minutes -->
+    </session-config>
+
+</web-app>
