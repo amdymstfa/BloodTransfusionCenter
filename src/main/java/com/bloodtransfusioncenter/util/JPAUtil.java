@@ -34,6 +34,7 @@ public class JPAUtil {
                 throw new RuntimeException("Failed to initialize EntityManagerFactory", e);
             }
         }
+        return emf;
     }
 
     /**
