@@ -17,7 +17,7 @@ class JPAContextListener implements ServletContextListener {
      */
 
     @Override
-    public void contextInitilized(ServletContextEven sce){
+    public void contextInitialized(ServletContextEvent sce){
         System.out.println("Starting - Initializing JPA");
         try{
             JPAUtil.getEntityManagerFactory();
@@ -31,7 +31,7 @@ class JPAContextListener implements ServletContextListener {
      * Called when the application shutting down
      * Close EntityManagerFactory
      */
-    public void contextDestroy(ServletContextEven sce){
+    public void contextDestroy(ServletContextEvent sce){
         System.out.println("Shutting down");
         try {
             JPAUtil.closeEntityManagerFactory();
