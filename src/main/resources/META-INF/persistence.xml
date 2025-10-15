@@ -1,98 +1,48 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
 
-    <!-- ========================================== -->
-    <!-- Persistence Unit -->
-    <!-- ========================================== -->
     <persistence-unit name="blood_transfusion_center_PU" transaction-type="RESOURCE_LOCAL">
 
         <!-- JPA Provider (Hibernate) -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <!-- ========================================== -->
-        <!-- Entities to Manage -->
-        <!-- ========================================== -->
+        <!-- Entities -->
         <class>com.bloodtransfusioncenter.model.Donor</class>
         <class>com.bloodtransfusioncenter.model.Recipient</class>
 
-        <!-- Exclude unlisted classes -->
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>
 
-            <!-- ========================================== -->
-            <!-- JDBC Connection Properties -->
-            <!-- ========================================== -->
-
-            <!-- MySQL Configuration -->
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost:3306/blood_bank_db?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/>
-            <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value=""/>
-
-            <!-- PostgreSQL Configuration (Alternative - Uncomment if needed) -->
-            <!--
+            <!-- PostgreSQL Configuration -->
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url"
-                      value="jdbc:postgresql://localhost:5432/blood_bank_db"/>
-            <property name="javax.persistence.jdbc.user" value="postgres"/>
-            <property name="javax.persistence.jdbc.password" value="password"/>
-            -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/blood_transfusion_center"/>
+            <property name="javax.persistence.jdbc.user" value="amdy"/>
+            <property name="javax.persistence.jdbc.password" value="qwerty"/>
 
-            <!-- ========================================== -->
-            <!-- Hibernate Properties -->
-            <!-- ========================================== -->
+            <!-- Hibernate Dialect -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
 
-            <!-- Database Dialect -->
-            <!-- MySQL 8 -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
-
-            <!-- PostgreSQL (Alternative) -->
-            <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/> -->
-
-            <!-- Show SQL in console -->
+            <!-- Show SQL -->
             <property name="hibernate.show_sql" value="true"/>
-
-            <!-- Format SQL for readability -->
             <property name="hibernate.format_sql" value="true"/>
-
-            <!-- Use SQL comments -->
             <property name="hibernate.use_sql_comments" value="true"/>
 
-            <!-- ========================================== -->
-            <!-- Schema Generation Strategy -->
-            <!-- ========================================== -->
-            <!-- Options:
-                 - create: Drop and recreate schema on startup
-                 - create-drop: Drop schema on shutdown
-                 - update: Update schema automatically (RECOMMENDED FOR DEV)
-                 - validate: Only validate schema (RECOMMENDED FOR PROD)
-                 - none: Do nothing
-            -->
+            <!-- Schema Generation -->
             <property name="hibernate.hbm2ddl.auto" value="update"/>
 
-            <!-- ========================================== -->
-            <!-- Connection Pool Settings (Optional) -->
-            <!-- ========================================== -->
+            <!-- Connection Pool -->
             <property name="hibernate.connection.pool_size" value="10"/>
 
-            <!-- ========================================== -->
-            <!-- Cache Settings (Optional) -->
-            <!-- ========================================== -->
+            <!-- Disable caching -->
             <property name="hibernate.cache.use_second_level_cache" value="false"/>
             <property name="hibernate.cache.use_query_cache" value="false"/>
 
-            <!-- ========================================== -->
             <!-- Other Settings -->
-            <!-- ========================================== -->
-            <!-- Enable statistics -->
             <property name="hibernate.generate_statistics" value="false"/>
-
-            <!-- JDBC batch size -->
             <property name="hibernate.jdbc.batch_size" value="20"/>
 
         </properties>

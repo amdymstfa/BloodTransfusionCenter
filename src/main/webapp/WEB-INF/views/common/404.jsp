@@ -1,4 +1,3 @@
-cat > src/main/webapp/WEB-INF/views/common/404.jsp << 'EOF'
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,4 +18,3 @@ cat > src/main/webapp/WEB-INF/views/common/404.jsp << 'EOF'
     </div>
 </body>
 </html>
-EOF

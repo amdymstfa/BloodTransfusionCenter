@@ -1,45 +1,33 @@
 package com.bloodtransfusioncenter.util;
 
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 /**
- * Manage JPA life cycle with servlet contain listener
+ * Manage JPA life cycle with servlet container listener
  * Ensure closing of database when application shutdown
  */
-
-class JPAContextListener implements ServletContextListener {
-
-    /**
-     * Called when the application is start
-     * Initializes EntityManagerFactory
-     */
+public class JPAContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce){
         System.out.println("Starting - Initializing JPA");
         try{
             JPAUtil.getEntityManagerFactory();
-            System.out.print("JPA initialized successfully");
+            System.out.println("JPA initialized successfully");
         } catch (Exception e) {
             throw new RuntimeException("Failed to initialize JPA", e);
         }
     }
 
-    /**
-     * Called when the application shutting down
-     * Close EntityManagerFactory
-     */
-    public void contextDestroy(ServletContextEvent sce){
+    @Override
+    public void contextDestroyed(ServletContextEvent sce){
         System.out.println("Shutting down");
         try {
             JPAUtil.closeEntityManagerFactory();
             System.out.println("JPA closing successfully");
         } catch (RuntimeException e) {
-            throw new RuntimeException("Failed of closing" , e);
+            throw new RuntimeException("Failed to close JPA", e);
         }
     }
-
-
 }
