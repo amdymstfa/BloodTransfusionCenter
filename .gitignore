@@ -89,4 +89,4 @@ logs/
 # JPA Configuration
 ##############################
 src/main/resources/META-INF/persistence.xml
-src/test/resources/META-INF/persistence-test.xml
+

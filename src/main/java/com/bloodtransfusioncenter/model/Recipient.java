@@ -61,7 +61,14 @@ public class Recipient extends Person {
      * @return the count of associated donors
      */
     public int getAssociatedDonorsCount() {
-        return donors != null ? donors.size() : 0;
+        if (donors == null) {
+            return 0;
+        }
+        try {
+            return donors.size();
+        } catch (org.hibernate.LazyInitializationException e) {
+            return 0;
+        }
     }
 
     /**
