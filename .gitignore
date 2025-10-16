@@ -1,28 +1,31 @@
+##############################
+# Maven build
+##############################
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+##############################
+# IDE / Editor files
+##############################
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+# IntelliJ IDEA
+.idea/
 *.iws
 *.iml
 *.ipr
 
-### Eclipse ###
-.apt_generated
+# Eclipse
 .classpath
-.factorypath
 .project
-.settings
+.settings/
+.factorypath
+.apt_generated/
 .springBeans
-.sts4-cache
+.sts4-cache/
 
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
@@ -32,11 +35,58 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
+# VS Code
 .vscode/
 
-### Mac OS ###
+##############################
+# OS files
+##############################
 .DS_Store
+Thumbs.db
 
-# .env
+##############################
+# Environment & secrets
+##############################
+.env
+.env.local
 .env.idea/
+*.properties.local
+*.secret
+*.key
+
+##############################
+# Logs & Reports
+##############################
+*.log
+logs/
+*.tmp
+*.bak
+*.swp
+*.swo
+*.out
+*.err
+
+##############################
+# Compiled files
+##############################
+*.class
+*.war
+*.ear
+*.jar
+
+##############################
+# Backup & test artifacts
+##############################
+*.old
+*.orig
+*.rej
+*.zip
+*.tar
+*.gz
+*.7z
+*.rar
+##############################
+# JPA Configuration
+##############################
+src/main/resources/META-INF/persistence.xml
+src/test/resources/META-INF/persistence-test.xml
