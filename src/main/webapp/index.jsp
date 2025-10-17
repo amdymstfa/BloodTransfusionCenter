@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
     <div class="container mt-5">
         <div class="text-center mb-5">
             <h1 class="display-4">🩸 Blood Transfusion Center</h1>
-            <p class="lead">Système de Gestion de Banque de Sang</p>
+            <p class="lead">Blood Bank Management System</p>
         </div>
 
         <div class="row g-4">
@@ -25,9 +25,9 @@
                                 <path d="M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4m13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276Z"/>
                             </svg>
                         </div>
-                        <h5 class="card-title">Donneurs</h5>
-                        <p class="card-text">Gérer les donneurs de sang</p>
-                        <a href="${pageContext.request.contextPath}/donors/list" class="btn btn-danger">Voir les donneurs</a>
+                        <h5 class="card-title">Donors</h5>
+                        <p class="card-text">Manage blood donors</p>
+                        <a href="${pageContext.request.contextPath}/donors/list" class="btn btn-danger">View Donors</a>
                     </div>
                 </div>
             </div>
@@ -41,9 +41,9 @@
                                 <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 7H.43c-2.128-5.697 4.165-8.83 7.394-5.857q.09.083.176.171a3 3 0 0 1 .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 8.717 2.01zM2.212 10h1.315C4.593 11.183 6.05 12.458 8 13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5"/>
                             </svg>
                         </div>
-                        <h5 class="card-title">Receveurs</h5>
-                        <p class="card-text">Gérer les receveurs de sang</p>
-                        <a href="${pageContext.request.contextPath}/recipients/list" class="btn btn-primary">Voir les receveurs</a>
+                        <h5 class="card-title">Recipients</h5>
+                        <p class="card-text">Manage blood recipients</p>
+                        <a href="${pageContext.request.contextPath}/recipients/list" class="btn btn-primary">View Recipients</a>
                     </div>
                 </div>
             </div>
@@ -58,15 +58,15 @@
                             </svg>
                         </div>
                         <h5 class="card-title">Associations</h5>
-                        <p class="card-text">Associer donneurs et receveurs</p>
-                        <a href="${pageContext.request.contextPath}/associations/form" class="btn btn-success">Gérer associations</a>
+                        <p class="card-text">Link donors with recipients</p>
+                        <a href="${pageContext.request.contextPath}/associations/form" class="btn btn-success">Manage Associations</a>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="mt-5 text-center text-muted">
-            <p>&copy; 2025 Blood Transfusion Center. Tous droits réservés.</p>
+            <p>&copy; 2025 Blood Transfusion Center. All rights reserved.</p>
         </div>
     </div>
 
