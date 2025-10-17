@@ -72,4 +72,32 @@ public class DonorDaoImpl extends GenericDaoImpl<Donor> implements DonorDao {
             em.close();
         }
     }
+
+    @Override
+    public Donor findDonorWithRecipient(Long id) {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
+            return em.createQuery(
+                            "SELECT d FROM Donor d LEFT JOIN FETCH d.recipient WHERE d.id = :id",
+                            Donor.class
+                    ).setParameter("id", id)
+                    .getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Donor> findAllWithRecipients() {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
+            return em.createQuery("SELECT DISTINCT d FROM Donor d LEFT JOIN FETCH d.recipient", Donor.class)
+                    .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+
+
 }
