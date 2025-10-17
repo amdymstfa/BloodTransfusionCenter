@@ -73,25 +73,40 @@
                             </div>
 
                             <div class="row">
-                                <!-- Phone -->
-                                <div class="col-md-6 mb-3">
-                                    <label for="donorPhone" class="form-label">Téléphone <span class="text-danger">*</span></label>
-                                    <input type="tel" class="form-control" id="donorPhone" name="phone" 
-                                           value="${donor.phone}" 
-                                           pattern="^(\\+212|0)[5-7]\\d{8}$" 
-                                           placeholder="0612345678" required>
-                                    <small class="text-muted">Format: 0612345678 ou +212612345678</small>
-                                </div>
+                              <!-- Phone -->
+                              <div class="col-md-6 mb-3">
+                                  <label for="donorPhone" class="form-label">
+                                      Téléphone <span class="text-danger">*</span>
+                                  </label>
+                                  <input type="tel"
+                                         class="form-control"
+                                         id="donorPhone"
+                                         name="phone"
+                                         value="${donor.phone}"
+                                         pattern="^(\+212|0)[5-7]\d{8}$"
+                                         placeholder="0612345678"
+                                         required>
+                                  <small class="text-muted">Format: 0612345678 ou +212612345678</small>
+                              </div>
+
 
                                 <!-- CIN -->
                                 <div class="col-md-6 mb-3">
-                                    <label for="donorCin" class="form-label">CIN <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="donorCin" name="cin" 
-                                           value="${donor.cin}" 
-                                           pattern="^[A-Z]{1,2}\\d{5,7}$" 
-                                           placeholder="AB123456" required>
+                                    <label for="donorCin" class="form-label">
+                                        CIN <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="donorCin"
+                                           name="cin"
+                                           value="${donor.cin}"
+                                           pattern="^[A-Z]{1,2}[0-9]{5,7}$"
+                                           placeholder="AB123456"
+                                           title="Le format doit être 1 ou 2 lettres suivies de 5 à 7 chiffres (ex: AB123456)"
+                                           required>
                                     <small class="text-muted">Format: AB123456</small>
                                 </div>
+
                             </div>
 
                             <div class="row">
@@ -188,23 +203,40 @@
                             </div>
 
                             <div class="row">
-                                <!-- Phone -->
-                                <div class="col-md-6 mb-3">
-                                    <label for="recipientPhone" class="form-label">Téléphone <span class="text-danger">*</span></label>
-                                    <input type="tel" class="form-control" id="recipientPhone" name="phone" 
-                                           value="${recipient.phone}" 
-                                           pattern="^(\\+212|0)[5-7]\\d{8}$" 
-                                           placeholder="0612345678" required>
-                                </div>
+                               <!-- Phone -->
+                               <div class="col-md-6 mb-3">
+                                   <label for="recipientPhone" class="form-label">
+                                       Téléphone <span class="text-danger">*</span>
+                                   </label>
+                                   <input type="tel"
+                                          class="form-control"
+                                          id="recipientPhone"
+                                          name="phone"
+                                          value="${recipient.phone}"
+                                          pattern="^(\+212|0)(5|6|7)\d{8}$"
+                                          placeholder="0612345678"
+                                          title="Le numéro doit commencer par 0 ou +212, suivi de 9 chiffres (ex: 0612345678 ou +212612345678)"
+                                          required>
+                                   <small class="text-muted">Format: 0612345678 ou +212612345678</small>
+                               </div>
 
-                                <!-- CIN -->
-                                <div class="col-md-6 mb-3">
-                                    <label for="recipientCin" class="form-label">CIN <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="recipientCin" name="cin" 
-                                           value="${recipient.cin}" 
-                                           pattern="^[A-Z]{1,2}\\d{5,7}$" 
-                                           placeholder="AB123456" required>
-                                </div>
+                               <!-- CIN -->
+                               <div class="col-md-6 mb-3">
+                                   <label for="recipientCin" class="form-label">
+                                       CIN <span class="text-danger">*</span>
+                                   </label>
+                                   <input type="text"
+                                          class="form-control"
+                                          id="recipientCin"
+                                          name="cin"
+                                          value="${recipient.cin}"
+                                          pattern="^[A-Z]{1,2}[0-9]{5,7}$"
+                                          placeholder="AB123456"
+                                          title="Le format doit être 1 ou 2 lettres majuscules suivies de 5 à 7 chiffres (ex: AB123456)"
+                                          required>
+                                   <small class="text-muted">Format: AB123456</small>
+                               </div>
+
                             </div>
 
                             <div class="row">
