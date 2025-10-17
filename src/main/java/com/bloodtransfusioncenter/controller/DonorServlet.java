@@ -89,13 +89,23 @@ public class DonorServlet extends HttpServlet {
     /**
      * Display the list of donors
      */
+//    private void listDonors(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//
+//        List<Donor> donors = donorService.getAllDonors();
+//        request.setAttribute("donors", donors);
+//        List<Donor> donorsWithRecipients = donorService.getAllDonorsWithRecipients();
+//        request.setAttribute("donors", donorsWithRecipients);
+//        request.getRequestDispatcher("/WEB-INF/views/donor-list.jsp").forward(request, response);
+//    }
     private void listDonors(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Donor> donors = donorService.getAllDonors();
-        request.setAttribute("donors", donors);
+        List<Donor> donorsWithRecipients = donorService.getAllDonorsWithRecipients();
+        request.setAttribute("donors", donorsWithRecipients);
         request.getRequestDispatcher("/WEB-INF/views/donor-list.jsp").forward(request, response);
     }
+
 
     /**
      * Show the donor creation from
