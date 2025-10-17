@@ -82,4 +82,35 @@ public class RecipientDaoImpl extends GenericDaoImpl<Recipient> implements Recip
             em.close();
         }
     }
+
+//    @Override
+//    public Recipient findRecipientWithDonors(Long id) {
+//        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+//        try {
+//            return em.createQuery(
+//                            "SELECT DISTINCT r FROM Recipient r LEFT JOIN FETCH r.donors WHERE r.id = :id",
+//                            Recipient.class
+//                    )
+//                    .setParameter("id", id)
+//                    .getSingleResult();
+//        } finally {
+//            em.close();
+//        }
+//    }
+
+    @Override
+    public Recipient findByIdWithDonors(Long id) {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
+            return em.createQuery(
+                            "SELECT DISTINCT r FROM Recipient r LEFT JOIN FETCH r.donors WHERE r.id = :id",
+                            Recipient.class
+                    )
+                    .setParameter("id", id)
+                    .getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
 }
