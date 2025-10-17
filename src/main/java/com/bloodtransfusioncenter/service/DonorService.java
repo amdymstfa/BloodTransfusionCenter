@@ -120,6 +120,19 @@ public class DonorService {
     }
 
     /**
+     * Gets all donors wiht recipients.
+     */
+    public Donor getDonorWithRecipient(Long id) {
+        return donorDao.findDonorWithRecipient(id);
+    }
+
+    public List<Donor> getAllDonorsWithRecipients() {
+        return donorDao.findAllWithRecipients();
+    }
+
+
+
+    /**
      * Gets all available donors.
      */
     public List<Donor> getAvailableDonors() {
