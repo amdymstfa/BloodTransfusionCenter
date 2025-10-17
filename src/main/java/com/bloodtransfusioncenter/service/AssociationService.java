@@ -8,6 +8,8 @@ import com.bloodtransfusioncenter.model.Recipient;
 import com.bloodtransfusioncenter.enums.DonorStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import javax.persistence.EntityManager;
+import com.bloodtransfusioncenter.util.JPAUtil;
 
 import java.util.List;
 import java.util.Optional;
@@ -85,36 +87,40 @@ public class AssociationService {
     /**
      * Removes association between donor and recipient.
      */
-    public void removeAssociation(Long donorId) throws Exception {
-        logger.info("Removing association for donor {}", donorId);
+    public void removeAssociation(Long donorId) {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
 
-        if (donorId == null) {
-            throw new Exception("Donor ID is required");
+        try {
+            em.getTransaction().begin();
+
+            // Charger le donneur avec son receveur
+            Donor donor = donorDao.findDonorWithRecipient(donorId);
+
+            if (donor != null && donor.getRecipient() != null) {
+                Long recipientId = donor.getRecipient().getId();
+
+                // Charger le receveur avec ses donneurs (dans la même session)
+                Recipient recipient = recipientDao.findByIdWithDonors(recipientId);
+
+                // Retirer le donneur du receveur
+                recipient.removeDonor(donor);
+                donor.setRecipient(null);
+
+                // Mettre à jour les deux entités
+                em.merge(recipient);
+                em.merge(donor);
+            }
+
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
         }
-
-        Optional<Donor> optionalDonor = donorDao.findById(donorId);
-        if (!optionalDonor.isPresent()) {
-            throw new Exception("Donor not found");
-        }
-
-        Donor donor = optionalDonor.get();
-        Recipient recipient = donor.getRecipient();
-
-        if (recipient == null) {
-            throw new Exception("Donor is not associated with any recipient");
-        }
-
-        // Remove association
-        recipient.removeDonor(donor);
-        donor.setRecipient(null);
-        donor.setStatus(DonorStatus.AVAILABLE);
-
-        // Update in database
-        donorDao.update(donor);
-        recipientDao.update(recipient);
-
-        logger.info("Association removed successfully");
     }
+
+
 
     /**
      * Gets available donors compatible with a recipient.
