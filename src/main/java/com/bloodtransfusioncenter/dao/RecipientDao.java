@@ -36,4 +36,7 @@ public interface RecipientDao extends GenericDao<Recipient> {
      * @return list of recipients ordered by urgency (CRITICAL first)
      */
     List<Recipient> findAllOrderByUrgency();
+
+    Recipient findByIdWithDonors(Long id);
+
 }
