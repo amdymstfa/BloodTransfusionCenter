@@ -30,4 +30,9 @@ public interface DonorDao extends GenericDao<Donor> {
      * @return list of donors with the specified status
      */
     List<Donor> findByStatus(DonorStatus status);
+
+
+    List<Donor> findAllWithRecipients();
+    Donor findDonorWithRecipient(Long id);
+
 }
