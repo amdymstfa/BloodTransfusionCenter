@@ -22,13 +22,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/">Accueil</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/donors/list">Donneurs</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/donors/list">Donors</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/recipients/list">Receveurs</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/recipients/list">Recipients</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/associations/form">Associations</a>
